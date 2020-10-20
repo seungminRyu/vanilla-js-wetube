@@ -1,7 +1,10 @@
 header.header
     .header__column
-        i.fab.fa-youtube
-        h1 류튜브에 오신것을 환영합니다!
+        a(href=routes.home)
+            i.fab.fa-youtube
+    .header__column
+        form(action=routes.search, method="get")
+            input(type="text", placeholder="검색어를 입력하세요.", name="term")
     .header__column
         ul
             li
