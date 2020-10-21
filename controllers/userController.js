@@ -12,7 +12,11 @@ export const postJoin = (req, res) => {
     }
 };
 
-export const logIn = (req, res) => res.render("login", { pageTitle: "Log In" });
+export const getLogIn = (req, res) => 
+    res.render("login", { pageTitle: "Log In" });
+export const postLogIn = (req, res) => 
+    res.redirect(routes.home);
+
 export const logOut = (req, res) => res.render("logout", { pageTitle: "Log Out" });
 export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail" });
 export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
