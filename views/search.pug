@@ -1,4 +1,12 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
     h3 #{searchingBy}의 검색 결과입니다.
+    .videos
+        each item in videos
+            +videoBlock({
+                title: item.title,
+                views: item.views,
+                videoFile: item.videoFile
+            })
