@@ -2,9 +2,9 @@ extends layouts/main
 
 block content
     form.form-container(action=routes.join, method="POST")
-        input(type="name", name="name", placeholder="이름 입력" )
-        input(type="email", name="email", placeholder="이메일 입력" )
-        input(type="password", name="password", placeholder="비밀번호 입력" )
-        input(type="password", name="password2", placeholder="비밀번호 확인" )
+        input(type="name", name="name", placeholder="이름 입력", required=true )
+        input(type="email", name="email", placeholder="이메일 입력", required=true )
+        input(type="password", name="password", placeholder="비밀번호 입력", required=true )
+        input(type="password", name="password2", placeholder="비밀번호 확인", required=true )
         input(type="submit", value="가입완료")
     include partials/socialLogin
