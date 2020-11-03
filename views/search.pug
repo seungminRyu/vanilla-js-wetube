@@ -2,11 +2,14 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    h3 #{searchingBy}의 검색 결과입니다.
+    h3 #{searchingBy}의 검색 결과
     .videos
+        if videos.length === 0
+            h5 찾으시는 검색결과가 없습니다. :(
         each item in videos
             +videoBlock({
                 title: item.title,
                 views: item.views,
-                videoFile: item.videoFile
+                videoFile: item.videoFile,
+                id: item.id
             })

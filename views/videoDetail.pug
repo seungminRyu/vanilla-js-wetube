@@ -2,9 +2,11 @@ extends layouts/main
 
 block content
     .video__player
-        video(src=`/${video.fileUrl}`)
+        video(src=`/${video.fileUrl}`, controls=true)
     .video__info
         a(href=routes.editVideo(video.id)) 수정
         h5.video__title=video.title
         span.video__views=video.views
         p.video_description=video.description
+    .video__comments
+        span.video__comment-number #{video.comments.length} 댓글
