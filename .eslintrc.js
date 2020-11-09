@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     indent: 'off',
     quotes: 'off',
+    comma-dangle: 'off'
   },
 };
