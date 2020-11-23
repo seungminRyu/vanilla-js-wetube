@@ -1,12 +1,16 @@
 extends layouts/main
 
 block content
-    .video__player
-        video(src=`/${video.fileUrl}`, controls=true)
-    .video__info
-        a(href=routes.editVideo(video.id)) 수정
-        h5.video__title=video.title
-        span.video__views=video.views
-        p.video_description=video.description
-    .video__comments
-        span.video__comment-number #{video.comments.length} 댓글
+    .video-detail__container
+        .video__player
+            video(src=`/${video.fileUrl}`, controls=true)
+        .video__info
+            a(href=routes.editVideo(video.id)) 수정
+            h5.video__title=video.title
+            p.video_description=video.description
+            if video.views === 1
+                span.video__views 1회
+            else
+                span.video__views #{video.views}회
+        .video__comments
+            span.video__comment-number #{video.comments.length} 댓글
