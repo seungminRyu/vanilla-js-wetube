@@ -22,6 +22,9 @@ export const postJoin = async (req, res) => {
                 email
             });
             await User.register(user, password);
+            // console.log(`${user.name} ${user.email} ${password} register done`);
+            const users = await User.find({});
+            console.log(users);
         } catch(error) {
             console.log(error);
         }
