@@ -3,7 +3,7 @@ extends layouts/main
 block content
     .form-container
         form(action=routes.login, method="POST")
-            input(type="email", name="email", placeholder="이메일 입력" )
-            input(type="password", name="password", placeholder="비밀번호 입력" )
+            input(type="email", name="email", placeholder="이메일 입력", required=true)
+            input(type="password", name="password", placeholder="비밀번호 입력", required=true)
             input(type="submit", value="로그인")
-            include partials/socialLogin
+        include partials/socialLogin

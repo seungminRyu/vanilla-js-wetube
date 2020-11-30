@@ -14,7 +14,7 @@ export const postJoin = async (req, res, next) => {
         res.status(400);
         res.render("join", { pageTitle: "Join" });
     } else {
-        // Todo: 유저를 데이터베이스에 등록
+        // 유저를 데이터베이스에 등록
         try {
             // User.create는 생성시키고 저장까지 하기 때문에 쓰지않는다.
             // create를 쓰게되면 register 부분에서 이미 존재하는 유저라고 에러가 난다.
@@ -31,11 +31,12 @@ export const postJoin = async (req, res, next) => {
     }
 };
 
-export const getLogIn = (req, res) => res.render("login", { pageTitle: "Log In" });
+export const getLogIn = (req, res) =>
+    res.render("login", { pageTitle: "Log In" });
 
-export const postLogIn = (req, res) => passport.authenticate("local", {
+export const postLogIn = passport.authenticate("local", {
     failureRedirect: routes.login,
-    sucessRedirect: routes.home
+    successRedirect: routes.home,
 });
 
 export const logOut = (req, res) => res.redirect(routes.home);
