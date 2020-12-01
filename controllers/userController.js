@@ -1,6 +1,7 @@
 import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
+import { request } from "express";
 
 export const getJoin = (req, res) => {
     res.render("join", { pageTitle: "Join" });
@@ -39,7 +40,20 @@ export const postLogIn = passport.authenticate("local", {
     successRedirect: routes.home,
 });
 
-export const logOut = (req, res) => res.redirect(routes.home);
+export const githubLogin = passport.authenticate("github");
+
+export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
+    console.log(accessToken, refreshToken, profile, cb);
+};
+
+export const postGithubLogin = (req, res) => {
+    res.send(routes.home);
+}
+
+export const logOut = (req, res) => {
+    req.logout();
+    res.redirect(routes.home);
+};
 
 export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail" });
 export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
