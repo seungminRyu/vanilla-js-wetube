@@ -9,7 +9,7 @@ export const localsMiddleware = (req, res, next) => {
     res.locals.user = req.user || null;
     console.log(req.user);
     next();
-}
+};
 
 export const onlyPublic = (req, res, next) => {
     if (req.user) {
@@ -17,7 +17,7 @@ export const onlyPublic = (req, res, next) => {
     } else {
         next();
     }
-}
+};
 
 export const onlyPrivate = (req, res, next) => {
     if (req.user) {
@@ -25,6 +25,6 @@ export const onlyPrivate = (req, res, next) => {
     } else {
         res.redirect(routes.home);
     }
-}
+};
 
 export const uploadVideo = multerVideo.single("videoFile");
