@@ -15,17 +15,14 @@ export const postJoin = async (req, res, next) => {
         res.status(400);
         res.render("join", { pageTitle: "Join" });
     } else {
-        // 유저를 데이터베이스에 등록
         try {
-            // User.create는 생성시키고 저장까지 하기 때문에 쓰지않는다.
-            // create를 쓰게되면 register 부분에서 이미 존재하는 유저라고 에러가 난다.
             const user = await User({
                 name,
                 email
-            });
+            })
             await User.register(user, password);
             next();
-        } catch(error) {
+        } catch (error) {
             console.log(error);
             res.redirect(routes.home);
         }
@@ -44,7 +41,7 @@ export const githubLogin = passport.authenticate("github");
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
     const {
-        _json: { id, avatar_url, name, email }
+        _json: { id, avatar_url: avatarUrl, name, email }
     } = profile;
     try {
         const user = await User.findOne({ email });
@@ -61,7 +58,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
             email,
             name,
             githubId: id,
-            avatarUrl: avatar_url
+            avatarUrl
         });
         console.log("new user register");
         return cb(null, newUser);
@@ -84,3 +81,7 @@ export const logOut = (req, res) => {
 export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail" });
 export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
 export const changePassword = (req, res) => res.render("changePassword", { pageTitle: "Change Password" });
+
+export const getMe = (req, res) => {
+    res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+}

@@ -18,5 +18,6 @@ passport.use(
 );
 
 passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 //passport.serializeUser(User.serializeUser()); // passport에게 쿠키에는 오직 user.id만 담을 것이라는것을 말해준다/
 //passport.deserializeUser(User.deserializeUser());
